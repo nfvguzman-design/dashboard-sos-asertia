@@ -113,18 +113,18 @@ pd_st.markdown("---")
 # ----------------------------------------------------
 # 4. BARRA LATERAL DE FILTROS MAESTROS
 # ----------------------------------------------------
-with pd_st.sidebar:
-    pd_st.subheader("🎛️ Filtros Maestros")
+with st.sidebar:
+    st.subheader("🎛️ Filtros Maestros")
     
     if not df_filtered_mundo.empty:
         regionales = df_filtered_mundo['REGIONAL'].dropna().unique().tolist() if 'REGIONAL' in df_filtered_mundo.columns else []
-        sel_regional = pd.multiselect("Regional", regionales, default=regionales)
+        sel_regional = st.multiselect("Regional", regionales, default=regionales)
         
         ciudades = df_filtered_mundo['CIUDAD'].dropna().unique().tolist() if 'CIUDAD' in df_filtered_mundo.columns else []
-        sel_ciudad = pd.multiselect("Ciudad", ciudades, default=ciudades)
+        sel_ciudad = st.multiselect("Ciudad", ciudades, default=ciudades)
         
         categorias = df_filtered_mundo['CATEGORÍA'].dropna().unique().tolist() if 'CATEGORÍA' in df_filtered_mundo.columns else []
-        sel_categoria = pd.multiselect("Categoría", categorias, default=categorias)
+        sel_categoria = st.multiselect("Categoría", categorias, default=categorias)
     else:
         sel_regional, sel_ciudad, sel_categoria = [], [], []
 
